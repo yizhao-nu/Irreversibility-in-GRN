@@ -219,7 +219,7 @@ for prob in ps:
     for i in range(10):
         name = './netfiles/newneg2_rs2_'+str(prob)+'_so_'+str(i)
         print(name)
-        cnet(name)
+        net(name)
 
 
 #G_rs2 = nx.read_gml('rs2.gml')
