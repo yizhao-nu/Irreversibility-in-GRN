@@ -14,32 +14,6 @@ fp_result_OE = paste('/data/yizhao/irr_grn/results/result','OE',fp,'pre','.csv',
 
 fp_changed = paste('/data/yizhao/irr_grn/results/changed','pre',fp,'.csv',sep='-')
 rs2 <- loadNetwork(fp_rs2)
-#attractors <- getAttractors(rs2)
-#print(attractors)
-
-#idx_irr012 <- read.csv("C:/Users/gris_/Desktop/Motter/Irreversibility/examplenetworks/idx_irr012.csv",header=FALSE)
-#idx_irr012 = apply(idx_irr012, 1, function(r) paste(r))
-#idx_possible <- read.csv("idx_possible.csv",header=FALSE)
-#idx_possible = apply(idx_possible, 1, function(r) paste(r))
-#idx_irr012 <- read.csv("idx_irr012.csv",header=FALSE)
-#idx_irr012 = apply(idx_irr012, 1, function(r) paste(r))
-
-#idx = idx_irr012
-#idx = unlist(as.list(as.numeric(idx)))
-
-#print(idx)
-#print(length(idx))
-
-#test = 1:100
-#for (i in 1:length(idx)){
-    #print(idx[i])
-    #print(test[idx[i]+1])
-#}
-
-
-
-#unique = apply(unique, 1, function(r) paste(r))
-
 
 alterState <- function(S,i){
     #print(S[i])
@@ -81,7 +55,6 @@ changed <- function(atts,a){
 
 net <- rs2
 num_nodes = 87
-epochs = 10000
 start = unique
 epochs = dim(start)[1]
 print(epochs)
@@ -108,35 +81,11 @@ for (j in 1:dim(start)[1]){
     A0 <- p0[attr(p0,'attractor'):dim(p0)[1],]
     S0 <- A0[1,]
 
-####### sample random ICs #######
-#for (j in 1:epochs){
-    #IS <- rbinom(num_nodes,1,runif(1))
-    
-    #IS <- c(1,   1,   1,   1,    0,    0,1,1)
-    #p0 <- getPathToAttractor(net,IS)
-    #A0 <- p0[attr(p0,'attractor'):dim(p0)[1],]
-    
-    #S0 <- A0[1,]
-    
-
-    #if(j>1){
-        #if(not_in_attractors(A_prev,S0)!=1){
-        #skipped <- skipped +1
-        #next
-        #}
-    #}
-    #if(j==1){
-        #A_prev <- A0
-    #}else{
-       #A_prev <- rbind(A_prev,A0)
-    #}
-   
 
     s=Sys.time()
-    #for (n in 1:length(idx)){
+    
     for (i in 1:num_nodes){
-    #for (i in 1:1){
-        #i = idx[n]+1
+    
         
         
         if(S0[i]==1){
@@ -207,16 +156,9 @@ for (j in 1:dim(start)[1]){
     e=Sys.time()
     print(e-s)
     
-    #print(ones/((j-skipped)*num_nodes))
-    #write.csv(results,"results_rs2_9220.csv")
-
-    #write.csv(num_changed,"changed_rs2_9220.csv")
-
-
+    
 
 }
-print(skipped)
-print(ones/((epochs-skipped)*num_nodes))
 
 colnames(results_OE) <- names(p1)
 colnames(results_KO) <- names(p1)
