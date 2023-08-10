@@ -2,8 +2,8 @@ import networkx as nx
 import numpy as np
 import os,os.path as osp
 import pandas as pd
-#import pyboolnet
-#from pyboolnet import file_exchange
+import pyboolnet
+from pyboolnet import file_exchange
 RANDOM_SEED=1
 np.random.seed(RANDOM_SEED)
 
@@ -84,4 +84,5 @@ if __name__ == '__main__':
                     name = './netfiles/newneg2_rs2_%.2f_%s_%02d_%d' % (prob,order,i,RANDOM_SEED)
                     print(name)
                     net(G_rs2,name,prob,order)
+                    cnet(name)
 

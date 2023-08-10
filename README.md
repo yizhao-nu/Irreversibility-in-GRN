@@ -1,2 +1,8 @@
 # Irreversiblility-in-GRN
-Irreversibility in gene regulatory networks
+Code associated with the manuscript "Irreversibility in gene regulatory networks"
+
+## Files in the repository
+
+
+
+## System requirements
