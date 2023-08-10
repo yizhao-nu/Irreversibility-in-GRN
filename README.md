@@ -12,11 +12,13 @@ The file `generate_nets.py` contains the algorithm for generating the rules for 
 
 The file `bns.sh` applies the attractor finding algorithm of Dubrova et al. (doi:10.1109/TCBB.2010.20) and requires a compiled version of the code available at https://people.kth.se/~dubrova/BNS/bns_v1.3.zip. Compilation instructions are available in the README file of the zipped package. We provide compiled versions in this repository (`bns.exe` for Windows systems and `bns` for Mac/Linux systems).
 
-The file `xxx.py` performs the irreversibility detection algorithm.
+The file 'attcsv.py' processes the found attractors as an input to the irreversibility detection algorithm.
+
+The file `try_KO_pre.r` performs the irreversibility detection algorithm.
 
 The notebook `irr_prob.ipynb` generates the graph featured in Fig. 3 of the paper, Fig. 4, and Fig. 5. It also analyzes the relationship of the parameter $r$ to the number of monomials, canalization, and bias of the rules in Fig. S2. 
 
-The file `variability.py` performs the analysis analysis of the variability of the irreversibility probability as featured in Fig. S3. 
+The file `variability.py` performs the analysis of the variability of the irreversibility probability as featured in Fig. S3. 
 
 The notebook `case_study.ipynb` contains details regarding the RNA-seq data preprocessing, in addition to the code for generating Fig. 6 and Figs. S4 and S5.
 
@@ -36,6 +38,10 @@ sympy
 scikit-learn
 pyboolnet (see instructions at https://github.com/hklarner/pyboolnet)
 bns (see instructions above)
+
+This repository also requires the following R packages:
+dplyr
+boolnet
 
 The packages (other than bns and pyboolnet) may be obtained from the Anaconda Python distribution. It is possible to create a virtual environment with the packages using the command:
 `mamba create env -n irrev-in-gn-nets -c conda-forge numpy scipy pandas networkx matplotlib sympy openpyxl jupyter patsy scikit-learn`

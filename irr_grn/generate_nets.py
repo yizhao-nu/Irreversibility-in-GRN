@@ -1,6 +1,7 @@
 import networkx as nx
 import numpy as np
 import os,os.path as osp
+import sys
 import pandas as pd
 import pyboolnet
 from pyboolnet import file_exchange
@@ -71,18 +72,11 @@ def cnet(name):
 #"""
    
 if __name__ == '__main__':
+    prob = float(sys.argv[1]) 
+    order = sys.argv[2] 
+    i = int(sys.argv[3])
     G_rs2 = nx.read_gml('./networks/rs2.gml')
-    ps = [0,0.2,0.4,0.6,0.8,1]
-    if not osp.exists('./netfiles/'):
-        os.mkdir('netfiles')
-    for order in ['asc','desc']:
-        for prob in ps:
-            for i in range(10):
-                if i>0 and (prob ==0 or prob==1):
-                    continue
-                else:
-                    name = './netfiles/newneg2_rs2_%.2f_%s_%02d_%d' % (prob,order,i,RANDOM_SEED)
-                    print(name)
-                    net(G_rs2,name,prob,order)
-                    cnet(name)
+    name = './netfiles/newneg2_rs2_%.2f_%s_%02d_%d' % (prob,order,i,RANDOM_SEED)
+    net(G_rs2,name,prob,order)
+    cnet(name)
 
