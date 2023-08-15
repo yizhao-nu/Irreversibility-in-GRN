@@ -5,12 +5,13 @@ import sys
 import pandas as pd
 import pyboolnet
 from pyboolnet import file_exchange
-RANDOM_SEED=1
+rep = int(sys.argv[4])
+RANDOM_SEED=rep
 np.random.seed(RANDOM_SEED)
 
 _path = os.path.dirname(os.path.realpath(__file__))
 
-def truth_tables(G,p,order='asc'):
+def truth_tables(G,p,q,order='asc'):
     truth_table_lines = ['targets, factors']
     degree = pd.Series(dict([(nd,dd) for nd,dd in G.out_degree]))
     reached = pd.Series(dict([(nd,len(nx.shortest_path(G,nd))) for nd in G.nodes]))
@@ -34,16 +35,22 @@ def truth_tables(G,p,order='asc'):
                 else:
                     truth_table += '!'+in_edge[0] #!A
             pts = 0
-            p1 = p 
+            p1 = p
+            p2 = q
             #print('p and or: %s; p (: %s' % (p1,p2))
             for m in range(len(rand_in_edges)-1):
                 in_edge = rand_in_edges[m+1]
                 rand1 = np.random.random()
                 if rand1 < p1:
-                    truth_table += '|('
-                else:
-                    truth_table += '&'
+                    truth_table += '& ('
                     pts += 1
+                else:
+                    rand2 = np.random.random()
+                    if rand2 < p2:
+                        truth_table += ' | '
+                    else:
+                        truth_table += ' & '
+                    
                 if in_edge[2]['weight'] > 0:
                     truth_table += in_edge[0]
                 else:
@@ -51,12 +58,12 @@ def truth_tables(G,p,order='asc'):
                         truth_table += '(!'+in_edge[0]+'&'+in_edge[0] +')' #(!A&A) for auto-repression
                     else:
                         truth_table += '!'+in_edge[0] #!A for negative regulation                
-            truth_table += ')'*(len(rand_in_edges)-pts-1)
+            truth_table += ')'*(pts)
         truth_table_lines.append(truth_table)
     return truth_table_lines
     
-def net(G,name,p,order):
-    tt = truth_tables(G,p,order)
+def net(G,name,p,q,order):
+    tt = truth_tables(G,p,q,order)
     with open(name+'.bnet','w+') as bnet:
         bnet.write('\n'.join(tt[1:]))
     
@@ -72,11 +79,14 @@ def cnet(name):
 #"""
    
 if __name__ == '__main__':
-    prob = float(sys.argv[1]) 
-    order = sys.argv[2] 
-    i = int(sys.argv[3])
+    cprob = float(sys.argv[1]) 
+    bprob = float(sys.argv[2]) 
+    order = sys.argv[3] 
+    
     G_rs2 = nx.read_gml('./networks/rs2.gml')
-    name = './netfiles/newneg2_rs2_%.2f_%s_%02d_%d' % (prob,order,i,RANDOM_SEED)
-    net(G_rs2,name,prob,order)
+    name = './netfiles/twoparam_%.2f_%.2f_%s_%02d_%d' % (cprob,bprob,order,rep,RANDOM_SEED)
+    print(name)
+    net(G_rs2,name,cprob,bprob,order)
     cnet(name)
+    print("Done.")
 

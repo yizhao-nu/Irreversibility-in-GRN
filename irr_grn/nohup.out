@@ -1,0 +1,60 @@
+Traceback (most recent call last):
+  File "/Users/thomaspwytock/Projects/Irreversibility_Eva/code/Irreversiblility-in-GRN/irr_grn/generate_nets.py", line 84, in <module>
+    rep = int(sys.argv[4])
+              ~~~~~~~~^^^
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/Users/thomaspwytock/Projects/Irreversibility_Eva/code/Irreversiblility-in-GRN/irr_grn/generate_nets.py", line 84, in <module>
+    rep = int(sys.argv[4])
+              ~~~~~~~~^^^
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/Users/thomaspwytock/Projects/Irreversibility_Eva/code/Irreversiblility-in-GRN/irr_grn/generate_nets.py", line 84, in <module>
+    rep = int(sys.argv[4])
+              ~~~~~~~~^^^
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/Users/thomaspwytock/Projects/Irreversibility_Eva/code/Irreversiblility-in-GRN/irr_grn/generate_nets.py", line 84, in <module>
+    rep = int(sys.argv[4])
+              ~~~~~~~~^^^
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/Users/thomaspwytock/Projects/Irreversibility_Eva/code/Irreversiblility-in-GRN/irr_grn/generate_nets.py", line 84, in <module>
+    rep = int(sys.argv[4])
+              ~~~~~~~~^^^
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/Users/thomaspwytock/Projects/Irreversibility_Eva/code/Irreversiblility-in-GRN/irr_grn/generate_nets.py", line 84, in <module>
+    rep = int(sys.argv[4])
+              ~~~~~~~~^^^
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/Users/thomaspwytock/Projects/Irreversibility_Eva/code/Irreversiblility-in-GRN/irr_grn/generate_nets.py", line 84, in <module>
+Traceback (most recent call last):
+  File "/Users/thomaspwytock/Projects/Irreversibility_Eva/code/Irreversiblility-in-GRN/irr_grn/generate_nets.py", line 84, in <module>
+    rep = int(sys.argv[4])
+              ~~~~~~~~^^^
+IndexError: list index out of range
+    rep = int(sys.argv[4])
+              ~~~~~~~~^^^
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/Users/thomaspwytock/Projects/Irreversibility_Eva/code/Irreversiblility-in-GRN/irr_grn/generate_nets.py", line 84, in <module>
+    rep = int(sys.argv[4])
+              ~~~~~~~~^^^
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/Users/thomaspwytock/Projects/Irreversibility_Eva/code/Irreversiblility-in-GRN/irr_grn/generate_nets.py", line 84, in <module>
+    rep = int(sys.argv[4])
+              ~~~~~~~~^^^
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/Users/thomaspwytock/Projects/Irreversibility_Eva/code/Irreversiblility-in-GRN/irr_grn/generate_nets.py", line 84, in <module>
+    rep = int(sys.argv[4])
+              ~~~~~~~~^^^
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/Users/thomaspwytock/Projects/Irreversibility_Eva/code/Irreversiblility-in-GRN/irr_grn/generate_nets.py", line 84, in <module>
+    rep = int(sys.argv[4])
+              ~~~~~~~~^^^
+IndexError: list index out of range

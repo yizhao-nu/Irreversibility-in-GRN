@@ -5,6 +5,9 @@ Code associated with the manuscript "Irreversibility in gene regulatory networks
 ### RegulonDB files
 The most recent version of RegulonDB can be downloaded from https://regulondb.ccg.unam.mx/menu/download/full_version/index.jsp. We include the file "irr_grn/input_files/generegulation_tmp.txt" downloaded on Jun 17, 2019.
 
+### Walkthrough of the analysis pipeline
+The steps of the analysis pipeline are described by the `README.md` in the `irr_grn` directory.
+
 ### Scripts and notebooks
 The file `irr_grn/read_reduce_grn.py` reads in the RegulonDB network and reduces it to its core.
 
@@ -12,7 +15,7 @@ The file `generate_nets.py` contains the algorithm for generating the rules for 
 
 The file `bns.sh` applies the attractor finding algorithm of Dubrova et al. (doi:10.1109/TCBB.2010.20) and requires a compiled version of the code available at https://people.kth.se/~dubrova/BNS/bns_v1.3.zip. Compilation instructions are available in the README file of the zipped package. We provide compiled versions in this repository (`bns.exe` for Windows systems and `bns` for Mac/Linux systems).
 
-The file 'attcsv.py' processes the found attractors as an input to the irreversibility detection algorithm.
+The file `attcsv.sh` processes the found attractors as an input to the irreversibility detection algorithm.
 
 The file `try_KO_pre.r` performs the irreversibility detection algorithm.
 
@@ -41,7 +44,7 @@ bns (see instructions above)
 
 This repository also requires the following R packages:
 dplyr
-boolnet
+BoolNet
 
-The packages (other than bns and pyboolnet) may be obtained from the Anaconda Python distribution. It is possible to create a virtual environment with the packages using the command:
+The packages (other than bns and pyboolnet) may be obtained from the conda package management software. It is possible to create a virtual environment with the packages using the command:
 `mamba create env -n irrev-in-gn-nets -c conda-forge numpy scipy pandas networkx matplotlib sympy openpyxl jupyter patsy scikit-learn`
