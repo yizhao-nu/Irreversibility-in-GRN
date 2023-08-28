@@ -1,0 +1,88 @@
+targets, factors
+zraR, zraR | crp
+asnC, (!asnC&asnC)& (!nac)
+dnaA, (!dnaA&dnaA) | argP
+metR, (!metR&metR)& (!metJ)
+cusR, cusR& (phoB)
+puuR, (!puuR&puuR) | !arcA | !crp
+yiaJ, (!yiaJ&yiaJ) | !crp
+putA, (!putA&putA) | marA
+cadC, cadC | mlrA | !leuO& (fnr & !hns)
+melR, melR | crp
+araC, araC & !xylR& (crp)
+yqjI, (!yqjI&yqjI)& (fnr)
+malI, (!malI&malI)& (crp)
+idnR, idnR | crp
+mraZ, (!mraZ&mraZ) & !pdhR
+pdeL, pdeL | !cra
+purR, (!purR&purR) | !fur
+prpR, (!prpR&prpR) | !phoB & crp
+fucR, fucR | crp
+tdcA, tdcA | fnr & crp
+lsrR, (!lsrR&lsrR) | crp
+glcC, (!glcC&glcC)& (!cra& (!fis | crp))
+nhaR, nhaR | !hns
+hyfR, hyfR& (fhlA | !fnr | crp)
+yeiL, yeiL& (lrp | !fnr)
+dpiA, dpiA | dcuR | !narL & arcA & !fnr& (!crp)
+nikR, (!nikR&nikR)& (!narL | fnr)
+aidB, (!aidB&aidB)& (!lrp)
+rbsR, (!rbsR&rbsR) | crp
+betI, (!betI&betI) | cra | !arcA
+lldR, (!lldR&lldR) | !arcA
+dcuR, !narL & fnr & crp
+metJ, !fur
+adiY, !hns
+cspA, fis | !hns
+flhD, !hdfR& (!yjjQ | !ompR | !fliZ & !rcsA | !fur | !rcsB & hns & crp)
+flhC, !hdfR | !yjjQ | !ompR | !fliZ& (!rcsA | !fur& (!rcsB | hns | crp))
+ptsG, (!ptsG&ptsG)& (!mlc& (soxS& (!arcA& (!fis & crp))))
+rhaR, rhaR | rhaS | crp
+galR, (!galR&galR) | !galS
+fhlA, fhlA | fnr
+mlc, !ptsG& ((!mlc&mlc) | !crp)
+rhaS, rhaR | rhaS | crp
+pdhR, (!pdhR&pdhR) | !cra& (crp)
+srlR, (!srlR&srlR)& (gutM& (hns& (crp)))
+xylR, xylR | arcA | !fis& (crp)
+mazE, (!mazE&mazE) | !mazF | fis | hns & crp
+uxuR, (!uxuR&uxuR) | !exuR | crp
+argP, (!argP&argP) | phoB
+galS, !galR& ((!galS&galS)& (crp))
+nac, (!nac&nac) | glnG | !fur | !fnr
+gutM, !srlR | gutM | hns | crp
+exuR, !uxuR | (!exuR&exuR) | !crp
+mazF, !mazE& ((!mazF&mazF) & fis& (hns | crp))
+glnG, (!glnG&glnG) | fis& (crp)
+marR, (!marR&marR) | rob & marA& (soxS | !cra & fis & crp)
+hdfR, !hns
+stpA, (!stpA&stpA) | lrp | !hns
+csgD, csgD & mlrA | ompR | !fliZ& (!rcsA& (cra | !rcsB & !hns& (crp)))
+yjjQ, leuO& (!hns)
+mlrA, !fliZ
+soxR, (!soxR&soxR) | !fur | !fnr
+oxyR, (!oxyR&oxyR) | crp
+rob, (!rob&rob) & !marA | !soxS
+narL, !fnr
+evgA, evgA | !hns
+bglJ, leuO | !hns
+ydeO, evgA | bglJ | (!ydeO&ydeO) | gadE | rcsA& (rcsB | !hns)
+gadW, ydeO& ((!gadW&gadW) | !gadX | gadE | phoB | rcsB | !fnr | !hns)
+ompR, crp
+marA, !marR | rob | marA & soxS | !cra | fis | crp
+gadX, adiY | !bglJ & !gadW | gadX | gadE & !rcsA | phoB | arcA | !rcsB | !fis | !fnr | !hns | !crp
+leuO, !stpA& (bglJ | leuO | rcsB & !hns)
+lrp, (!lrp&lrp) | gadE& (rcsB | !hns)
+fliZ, flhD | flhC & !csgD | hns
+gadE, evgA& (ydeO& (gadW | gadX | !fliZ | gadE | arcA& (rcsB | !hns& (!crp))))
+rcsA, gadE | rcsA | rcsB | !hns
+soxS, soxR | (!soxS&soxS)& (!fur & !fnr)
+phoB, phoB
+cra, !phoB
+arcA, fnr
+fur, oxyR | soxS & (!fur&fur) & crp
+rcsB, !hns
+fis, (!fis&fis)& (crp)
+fnr, !arcA | !fur | (!fnr&fnr)
+hns, cspA& (gadX | fis | (!hns&hns))
+crp, cra | !fis | crp
