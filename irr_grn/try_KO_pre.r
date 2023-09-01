@@ -6,8 +6,10 @@ print(fp)
 fp_rs2 = paste('./netfiles/', fp,'.net',sep='')
 fp_unique = paste('./attfiles/','1st_',fp,".csv",sep='')
 unique <- read.csv(fp_unique,header=FALSE)
-start = apply(unique, 2, function(r) paste(r)) ## converts to character
 print(dim(unique))
+epochs = min(dim(unique)[1],15000)
+start = apply(unique, 2, function(r) paste(r)) ## converts to character
+
 
 fp_result_KO = paste('./results/result-KO-',fp,'-pre.csv',sep='')
 fp_result_OE = paste('./results/result-OE-',fp,'-pre.csv',sep='')
@@ -54,7 +56,7 @@ changed <- function(atts,a){
 
 
 num_nodes = 87
-epochs = dim(start)[1]
+epochs = min(dim(start)[1],15000)
 print(epochs)
 results_KO <- matrix(NA,epochs+2,num_nodes)
 results_OE <- matrix(NA,epochs+2,num_nodes)
@@ -66,7 +68,7 @@ skipped <- 0 ## is this needed ?
 
 
 ####### use found attractors #######
-for (j in 1:dim(start)[1]){
+for (j in 1:epochs){
     
     IS <- as.numeric(unlist(start[j,]))
        print(IS)
@@ -89,6 +91,14 @@ for (j in 1:dim(start)[1]){
         new_i = S1[i]
         N1 <- fixGenes(net,i,new_i)
         p1 <- try(getPathToAttractor(N1,S1,includeAttractorStates = 'first'))
+	    if(inherits(p1, "try-error")){
+            results_OE[j,i] <- NA
+            results_KO[j,i] <- NA
+            num_changed[j,i] <- 0
+        
+            #error handling code, maybe just skip this iteration using
+            next
+        }
         A1 <- lapply(p1[dim(p1)[1],],as.numeric)
         N2 <- fixGenes(N1,i,-1)
         A1[i] = 1 - new_i
@@ -97,10 +107,6 @@ for (j in 1:dim(start)[1]){
         IRR <- not_in_attractors(A0,A2)
         ones = ones + IRR
         if(S0[[i]]==1){
-            #print(N1)
-            #S2 <- alterState(A1,i)
-            #print(A1)
-            #S2 <- A1
             results_KO[j,i] <- IRR
             results_OE[j,i] <- NA
             rec[j,i] <- 1
@@ -108,11 +114,6 @@ for (j in 1:dim(start)[1]){
         
         }
         else if(S0[[i]]==0){
-            #print(N1)
-            #try(
-            #S2 <- alterState(A1,i)
-            #print(A1)
-            #S2 <- A1
             results_OE[j,i] <- IRR
             results_KO[j,i] <- NA
             rec[j,i] <- 0
