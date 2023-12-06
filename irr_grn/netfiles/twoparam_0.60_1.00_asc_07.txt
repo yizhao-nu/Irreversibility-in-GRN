@@ -1,2 +1,0 @@
-./netfiles/twoparam_0.60_1.00_asc_07_7
-Done.

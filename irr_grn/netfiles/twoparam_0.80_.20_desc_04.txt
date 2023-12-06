@@ -1,2 +1,0 @@
-./netfiles/twoparam_0.80_0.20_desc_04_4
-Done.
