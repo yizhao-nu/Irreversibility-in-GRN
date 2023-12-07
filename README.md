@@ -1,52 +1,58 @@
 # Irreversiblility-in-GRN
 Code associated with the manuscript "Irreversibility in Bacterial Regulatory Networks"
 
-## System requirements
+## Installation instructions
 
-The packages (other than bns and pyboolnet) may be obtained from the conda package management software. It is possible to create a virtual environment with the packages using the command:
-`conda create env -n irrev-in-gn-nets -c conda-forge gh git jupyter matplotlib networkx numpy openpyxl pandas patsy scipy scikit-learn sympy r-dplyr r-BoolNet`
+### Step 1: Create virtual environment. 
+The packages (other than bns and pyboolnet) may be obtained from the conda package management software. 
+We recommend using the [miniforge distribution](https://github.com/conda-forge/miniforge) of conda, which offers a substantially faster dependency solver that can be invoked by replacing `conda` with `mamba` in the above command. 
+See details at the link for installation.
 
-We recommend using the [miniforge distribution](https://github.com/conda-forge/miniforge) of conda, which offers a substantially faster dependency solver that can be invoked by replacing `conda` with `mamba` in the above command. See details at the link for installation.
+It is possible to create a virtual environment with the packages using the command:
 
-This repository requires the following python packages:
+`mamba create env -n irrev-in-gn-nets -c conda-forge python=3.10 gh git jupyter matplotlib networkx numpy openpyxl pandas patsy scipy scikit-learn sympy r-dplyr r-BoolNet`
 
-### Initially installed packages
+
+#### Initially installed packages
 
 The following packages are installed upon creating the environment:
 
-gh: GitHub command line interface
+* gh: GitHub command line interface
+* git: git version control sofrware
+* jupyter: python library for viewing python notebooks, used for running commands interactively
+* matplotlib: python plotting library, used for generating figures
+* networkx: python network algorithms, analysis, and layout library
+* numpy: numerical python library
+* openpyxl: python library for opening excel files
+* pandas: python data-science library, used for creating dataframes
+* patsy: python statistical modeling library
+* scipy: python scientific computing library
+* scikit-learn: python machine-learning library
+* sympy: python symbolic mathematics library
+* r-dplyr: R data manipulation grammar
+* r-BoolNet: R Boolean network library
 
-git: git version control sofrware
+Note that the environment is based on Python v. 3.10.
 
-jupyter: python library for viewing python notebooks, used for running commands interactively
+### Step 2: Install additional dependencies
+After creating the virtual environment, activate the environment by typing
 
-matplotlib: python plotting library, used for generating figures
+`mamba activate irrev-in-gn-nets`
 
-networkx: python network algorithms, analysis, and layout library
+Then, install the following packages:
+* pyboolnet (Enter `pip install git+https://github.com/hklarner/pyboolnet` at the command line)
+* bns (download the source code from https://people.kth.se/~dubrova/BNS/bns_v1.3.zip and follow the instructions in the README file)
 
-numpy: numerical python library
+### Step 3: Clone the repository
+After compiling `bns`, clone the repository (e.g., using the command `gh repo clone https://github.com/yizhao-nu/Irreversiblility-in-GRN`). 
+Next, copy the `bns` executable (`bns.exe` on Windows) into the `irr_grn` directory.
+If you cloned the repository into the same directory that you downloaded `bns_v1.3.zip` into, then
+the command
 
-openpyxl: python library for opening excel files
+`cp bns_v1.3/src/bns irr_grn/bns`
 
-pandas: python data-science library, used for creating dataframes
+or the Windows equivalent will copy the executable of the `bns` program into the repository.
 
-patsy: python statistical modeling library
-
-scipy: python scientific computing library
-
-scikit-learn: python machine-learning library
-
-sympy: python symbolic mathematics library
-
-r-dplyr: R data manipulation grammar
-
-r-BoolNet: R Boolean network library
-
-### Packages to be installed separately
-
-pyboolnet (see instructions at https://github.com/hklarner/pyboolnet)
-
-bns (see instructions below)
 
 ## Files in the repository
 ### RegulonDB files
@@ -56,19 +62,38 @@ The most recent version of RegulonDB can be downloaded from https://regulondb.cc
 The steps of the analysis pipeline are described by the `README.md` in the `irr_grn` directory.
 
 ### Scripts and notebooks
+
+#### Scripts for processing the input data, generating rules, finding attractors, and characterizing transitions.
 The file `irr_grn/read_reduce_grn.py` reads in the RegulonDB network and reduces it to its core.
 
-The file `generate_nets.py` contains the algorithm for generating the rules for different values of the parameter $r$. This script requires the pyboolnet package to perform the logic reduction of the rules. This package may be obtained from the  github repo https://github.com/hklarner/pyboolnet by following the instructions on the README page.
+The file `irr_grn/generate_nets.py` contains the algorithm for generating the rules for different values of the parameter $r$. This script requires the pyboolnet package to perform the logic reduction of the rules.
 
-The file `bns.sh` applies the attractor finding algorithm of Dubrova et al. (doi:10.1109/TCBB.2010.20) and requires a compiled version of the code available at https://people.kth.se/~dubrova/BNS/bns_v1.3.zip. Compilation instructions are available in the README file of the zipped package. We provide compiled versions in this repository (`bns.exe` for Windows systems and `bns` for Mac/Linux systems).
+The file `irr_grn/bns.sh` applies the attractor finding algorithm of Dubrova et al. (doi:10.1109/TCBB.2010.20) and requires the `bns` executable that can be obtained and compiled as described in Step 2 above.
 
-The file `attcsv.sh` processes the found attractors as an input to the irreversibility detection algorithm.
+The file `irr_grn/attcsv.sh` processes the found attractors as an input to the irreversibility detection algorithm.
 
-The file `try_KO_pre.r` performs the irreversibility detection algorithm.
+The file `irr_grn/try_KO_pre.r` performs the irreversibility detection algorithm.
 
-The notebook `irr_prob.ipynb` generates the graph featured in Fig. 3 of the paper, Fig. 4, and Fig. 5. It also analyzes the relationship of the parameter $r$ to the number of monomials, canalization, and bias of the rules in Fig. S2. 
+The script `irr_grn/analyze_crp_irr_resp_gns.r` calculates the irreversible response genes to the knockout of _crp_ according to the Boolean model.
 
-The file `variability.py` performs the analysis of the variability of the irreversibility probability as featured in Fig. S3. 
+Analysis of the attractor transitions is performed by `irr_grn/analyze_attractor_transitions.r`. 
 
-The notebook `case_study.ipynb` contains details regarding the RNA-seq data preprocessing, in addition to the code for generating Fig. 6 and Figs. S4 and S5.
+#### Notebooks for generating the figures of the paper.
 
+The notebook `irr_grn/irr_prob.ipynb`:
+
+1. Analyzes the relationship of the parameters $r$ and $s$ to the rule bias and canalization depth in Fig. 3,
+2. Generates the graph featured in Fig. 4 of the paper, and
+3. Generates Figs. 5 and 6.
+
+The file `irr_grn/variability.py` performs the analysis of the variability of the irreversibility probability as featured in Fig. S1.
+
+The notebook `irr_grn/case_study.ipynb` contains details regarding the RNA-seq data preprocessing, in addition to the code for generating Fig. 7B.
+
+The output of this script is used in `irr_grn/attractor_diff.ipynb` to calculate:
+
+1. The fraction of attractors that have each period length;
+2. The fraction of transitions that occur between two fixed points, a fixed point and a partial fixed point, two partial fixed points with the same set of time-dependent nodes, and two partial fixed points with different sets of time-dependent nodes;
+3. The fraction of transitions involving at least one partial fixed point for which both the initial and final attractors are guaranteed to be preserved.
+
+These are used to compute the percentages referenced in the Supplementary Information.
