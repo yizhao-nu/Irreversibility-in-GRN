@@ -18,6 +18,13 @@ done
 
 wait
 
+for i in {00..19}; do
+q1=0
+printf -v q11 "%.02f" ${q1}
+nohup python generate_nets.py ${q11} ${p} ${order} ${i}> netfiles/twoparam_${q11}_${p}_${order}_${i}.txt 2>&1 & 
+done
+
+
 done
 nohup python generate_nets.py "0.00" "1.00" ${order} "00"> netfiles/twoparam_0.00_1.00_${order}_00.txt 2>&1 & 
 nohup python generate_nets.py "1.00" "0.00" ${order} "00"> netfiles/twoparam_1.00_0.00_${order}_00.txt 2>&1 & 
