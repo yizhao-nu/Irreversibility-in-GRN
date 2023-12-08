@@ -74,7 +74,7 @@ def main():
             LL = LLp
             LLp = len(net.nodes)
         if ii==0:
-            nx.write_gml('rs2.gml',net)
+            nx.write_gml(net,'./networks/rs2.gml')
         else:
             pass
     
