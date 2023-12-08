@@ -109,7 +109,7 @@ def attractors(cnet, bnspath=_path,bnsname='bns', cleanup=True):
                 pass
             elif 'Total' in cleanline:
                 pass
-            elif 'Start searching for all atractors.' in cleanline:
+            elif 'Start searching for all attractors.' in cleanline:
                 pass
             elif 'Depth' in cleanline:
                 pass
@@ -149,7 +149,7 @@ def attractors_from_txt(txt_name, bnspath=_path, cleanup=True):
             pass
         elif 'Total' in cleanline:
             pass
-        elif 'Start searching for all atractors.' in cleanline:
+        elif 'Start searching for all attractors.' in cleanline:
             pass
         elif 'Depth' in cleanline:
             pass

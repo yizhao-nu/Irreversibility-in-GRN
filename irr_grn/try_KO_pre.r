@@ -7,7 +7,7 @@ fp_rs2 = paste('./netfiles/', fp,'.net',sep='')
 fp_unique = paste('./attfiles/','1st_',fp,".csv",sep='')
 unique <- read.csv(fp_unique,header=FALSE)
 print(dim(unique))
-epochs = min(dim(unique)[1],15000)
+epochs = dim(unique)[1]
 start = apply(unique, 2, function(r) paste(r)) ## converts to character
 
 
@@ -18,9 +18,6 @@ fp_changed = paste('./results/changed-pre-',fp,'.csv',sep='')
 net <- loadNetwork(fp_rs2)
 
 alterState <- function(S,i){
-    #print(S[i])
-    #S = lapply(S,as.numeric)
-    #print(S[i])
     S[i] <- 1- S[i]
     return(S)
 }
@@ -56,8 +53,6 @@ changed <- function(atts,a){
 
 
 num_nodes = 87
-epochs = min(dim(start)[1],15000)
-print(epochs)
 results_KO <- matrix(NA,epochs+2,num_nodes)
 results_OE <- matrix(NA,epochs+2,num_nodes)
 rec <- matrix(NA,epochs,num_nodes)
@@ -71,7 +66,7 @@ skipped <- 0 ## is this needed ?
 for (j in 1:epochs){
     
     IS <- as.numeric(unlist(start[j,]))
-       print(IS)
+    print(IS)
     
     
    
@@ -85,8 +80,6 @@ for (j in 1:epochs){
     s=Sys.time()
     
     for (i in 1:num_nodes){
-    
-        
         S1 <- alterState(S0,i)
         new_i = S1[i]
         N1 <- fixGenes(net,i,new_i)
@@ -110,7 +103,6 @@ for (j in 1:epochs){
             results_KO[j,i] <- IRR
             results_OE[j,i] <- NA
             rec[j,i] <- 1
-            
         
         }
         else if(S0[[i]]==0){
@@ -146,20 +138,7 @@ results_KO[epochs+2,] = colSums(rec, na.rm=T)/(epochs-skipped)
 results_KO <- results_KO[,order(results_KO[epochs+1,],decreasing=TRUE)]
 write.csv(results_KO,fp_result_KO)
 
-
-
 num_changed[epochs+1,] = colSums(num_changed[1:epochs,])/(epochs-skipped)
 num_changed <- num_changed[,order(num_changed[epochs+1,],decreasing=TRUE)]
 write.csv(num_changed,fp_changed)
-
-
-
-
-
-
-    
-
-
-
-
 

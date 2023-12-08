@@ -10,7 +10,7 @@ See details at the link for installation.
 
 It is possible to create a virtual environment with the packages using the command:
 
-`mamba create env -n irrev-in-gn-nets -c conda-forge python=3.10 gh git jupyter matplotlib networkx numpy openpyxl pandas patsy scipy scikit-learn sympy r-dplyr r-BoolNet`
+`mamba create env -n irrev-in-gn-nets -c conda-forge python=3.10 gh git jupyter matplotlib networkx numpy openpyxl pandas patsy scipy scikit-learn sympy r-essentials r-base r-dplyr r-BoolNet`
 
 
 #### Initially installed packages

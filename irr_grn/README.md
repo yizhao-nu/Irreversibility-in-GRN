@@ -17,5 +17,5 @@ Run the command `./attcsv.sh`.
 This will generate the files that contain the first states of the attractors, which will be used to detect irreversibility.
 
 ## Run the irreversibility detection algorithm
-
+Run the command `./simulation.sh`
 
