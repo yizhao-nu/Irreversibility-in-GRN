@@ -1,23 +1,25 @@
 # Analysis pipeline
 Analysis of the network irreversibility proceeds according to the following procedure: 
 
-## Convert RegulonDB network to GraphML file
+## Preparation: Generating the rules and finding attractors
+### Convert RegulonDB network to GraphML file
 Run the command `python read_reduce_grn.py`. This will create the file `networks/rs2.gml`.
 
-## Generate networks
+### Generate networks
 Run the command `./generate_nets.sh`.
 This will generate network files in the `netfiles/` directory.
 There should be 20 for each value of $r$ and $s$ considered in the manuscript (except those that lead to unique rules). 
 
-## Find attractors
+### Find attractors
 Run the command `./bns.sh`.
 This will generate the attractors, which are stored in the `attfiles/` directory.
 
 Run the command `./attcsv.sh`.
 This will generate the files that contain the first states of the attractors, which will be used to detect irreversibility.
 
-## Run the irreversibility detection algorithm
-Run the command `./simulation.sh`
+## Execution: detecting irreversibility and characterizing transitions
+### Run the irreversibility detection algorithm
+Run the command `./simulation.sh`.
 
 This command runs the script `try_KO_pre.r`, which executes the irreversibility detection algorithm. It is designed to use all available processes on the computer. 
 Full recalculation of the results takes approximately 3,000 hours on a single processor.
@@ -28,11 +30,18 @@ If using an older version of bash, change the line to `sleep 1`.
 Finally, the script's default behavior is to skip any files that have been previously completed.
 If recalculation of existing files is needed, they will need to first be removed from the `results/` directory.
 
-## Analyze the attractor transitions
-Run the command `./attr_trans.sh`
+### Get _crp_ irreversibility response genes
+Run the command `./irr_resp_gns.sh`.
 
-This command runs the script `analyze_attractor_transitions.r`, which characterizes the starting and ending attractors for each transition.
+This command runs the script `analyze_crp_irr_resp_gns.r`, which obtains the irreversible response genes for each transition.
 The options described for the script `simulation.sh` apply (see preceding section). 
 
+### Analyze the attractor transitions
+Run the command `./attr_trans.sh`.
 
+This command runs the script `analyze_attractor_transitions.r`, which characterizes the starting and ending attractors for each transition.
+The options described for the script `simulation.sh` apply (see two sections above).
+
+## Presentation: calculating statistics and generating figures
+### Running the notebooks
 

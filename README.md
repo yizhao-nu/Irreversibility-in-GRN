@@ -75,9 +75,11 @@ The file `irr_grn/attcsv.sh` processes the found attractors as an input to the i
 The file `irr_grn/simulation.sh` performs the irreversibility detection algorithm.
 This script invokes the R script `try_KO_pre.r`. 
 
-The script `irr_grn/analyze_crp_irr_resp_gns.r` calculates the irreversible response genes to the knockout of _crp_ according to the Boolean model.
+The file `irr_grn/irr_resp_gns.sh` calculates the irreversible response genes to the knockout and overexpression of _crp_ according to the Boolean model.
+The script invokes the R script `irr_grn/analyze_crp_irr_resp_gns.r` 
 
-Analysis of the attractor transitions is performed by `irr_grn/analyze_attractor_transitions.r`. 
+The file `attr_trans.sh` performs the analysis of the attractor transitions.
+The script invokes the R script `irr_grn/analyze_attractor_transitions.r`. 
 
 #### Notebooks for generating the figures of the paper.
 
