@@ -1,4 +1,4 @@
-# Irreversiblility-in-GRN
+# Irreversibility-in-GRN
 Code associated with the manuscript "Irreversibility in Bacterial Regulatory Networks"
 
 ## Installation instructions
@@ -72,7 +72,8 @@ The file `irr_grn/bns.sh` applies the attractor finding algorithm of Dubrova et 
 
 The file `irr_grn/attcsv.sh` processes the found attractors as an input to the irreversibility detection algorithm.
 
-The file `irr_grn/try_KO_pre.r` performs the irreversibility detection algorithm.
+The file `irr_grn/simulation.sh` performs the irreversibility detection algorithm.
+This script invokes the R script `try_KO_pre.r`. 
 
 The script `irr_grn/analyze_crp_irr_resp_gns.r` calculates the irreversible response genes to the knockout of _crp_ according to the Boolean model.
 
