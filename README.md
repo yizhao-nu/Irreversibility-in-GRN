@@ -1,9 +1,9 @@
-# Irreversiblility-in-GRN
+# Irreversibility-in-GRN
 Code associated with the manuscript "Irreversibility in Bacterial Regulatory Networks"
 
 ## Installation instructions
 
-### Step 1: Create virtual environment. 
+### Step 1: Create a virtual environment. 
 The packages (other than bns and pyboolnet) may be obtained from the conda package management software. 
 We recommend using the [miniforge distribution](https://github.com/conda-forge/miniforge) of conda, which offers a substantially faster dependency solver that can be invoked by replacing `conda` with `mamba` in the above command. 
 See details at the link for installation.
