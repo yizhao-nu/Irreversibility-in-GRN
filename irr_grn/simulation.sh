@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+## Statement to get the max number of cpus on a machine
+cpus=$( ls -d /sys/devices/system/cpu/cpu[[:digit:]]* | wc -w )
+## Function to make the number of CPUs match the number of processes
+function pwait() {
+	while [ $(ps -u | grep -v "grep" | grep -c "try_KO_pre.r") -ge $1 ]; do
+        wait -n ## change to ""sleep 1"" if using bash version <4.3
+    done
+}
+
 ps=(0.20 0.40 0.60 0.80)
 orders=('asc' 'desc')
 for order in ${orders[@]}; do
@@ -7,21 +16,38 @@ for p in ${ps[@]}; do
 for ii in {00..19}; do
 q1=1.00
 printf -v i "%d" ${ii#0}
+if [ ! -f ./results/twoparam_${p}_${q1}_${order}_${ii}_${i}.txt ]; then
+echo ${p}_${q1}_${order}_${ii}_${i}
 nohup Rscript try_KO_pre.r twoparam_${p}_${q1}_${order}_${ii}_${i}> ./results/twoparam_${p}_${q1}_${order}_${ii}_${i}.txt 2>&1 & 
-done
-wait
-for ii in {00..19}; do
+pwait $cpus
+fi
+
+
 q2=$(bc -l <<<"1-${p}")
 printf -v q11 "%.02f" ${q2}
+if [ ! -f ./results/twoparam_${p}_${q11}_${order}_${ii}_${i}.txt ]; then
+echo ${p}_${q11}_${order}_${ii}_${i}
 nohup Rscript try_KO_pre.r twoparam_${p}_${q11}_${order}_${ii}_${i}> ./results/twoparam_${p}_${q11}_${order}_${ii}_${i}.txt 2>&1 & 
-done
-wait
-for ii in {00..19}; do
+pwait $cpus
+fi
+
 q3=0.00
-nohup Rscript try_KO_pre.r twoparam_${q3}_${p}_${order}_${ii}_${i} > ./attfiles/att_twoparam_${q3}_${p}_${order}_${ii}_${i}.txt 2>&1 & 
+if [ ! -f ./results/twoparam_${q3}_${p}_${order}_${ii}_${i}.txt ]; then
+echo ${q3}_${p}_${order}_${ii}_${i}
+nohup Rscript try_KO_pre.r twoparam_${q3}_${p}_${order}_${ii}_${i} > ./results/twoparam_${q3}_${p}_${order}_${ii}_${i}.txt 2>&1 & 
+pwait $cpus
+fi
 done
-wait
+
 done
+if [ ! -f ./results/twoparam_1.00_0.00_${order}_00_0.txt ]; then
 nohup Rscript try_KO_pre.r twoparam_1.00_0.00_${order}_00_0> ./results/twoparam_1.00_0.00_${order}_00_0.txt 2>&1 &
+pwait $cpus
+fi
+
+if [ ! -f ./results/twoparam_0.00_1.00_${order}_00_0.txt ]; then
 nohup Rscript try_KO_pre.r twoparam_0.00_1.00_${order}_00_0> ./results/twoparam_0.00_1.00_${order}_00_0.txt 2>&1 &
+pwait $cpus
+fi
+
 done
