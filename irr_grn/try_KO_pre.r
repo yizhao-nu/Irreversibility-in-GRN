@@ -73,7 +73,7 @@ for (j in 1:epochs){
     
     ## get periodic attractor
     p0 <- try(getPathToAttractor(net,IS))
-    if (inherits(p0)=='try-error'){ next }
+    if (inherits(p0,'try-error')){ next }
     ## print(p0)
     A0 <- p0[attr(p0,'attractor'),]
     S0 <- A0[1,]
