@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ## Statement to get the max number of cpus on a machine
-cpus=$( ls -d /sys/devices/system/cpu/cpu[[:digit:]]* | wc -w )
+cpus=$( ls -d /sys/devices/system/cpu/cpu[[:digit:]]* | wc -w ) ## can CHANGE to an integer to set the max number of processes
 ## Function to make the number of CPUs match the number of processes
 function pwait() {
 	while [ $(ps -u | grep -v "grep" | grep -c "try_KO_pre.r") -ge $1 ]; do
@@ -41,13 +41,14 @@ done
 
 done
 if [ ! -f ./results/twoparam_1.00_0.00_${order}_00_0.txt ]; then
-nohup Rscript try_KO_pre.r twoparam_1.00_0.00_${order}_00_0> ./results/twoparam_1.00_0.00_${order}_00_0.txt 2>&1 &
+nohup Rscript try_KO_pre.r twoparam_1.00_0.00_${order}_00_0 > ./results/twoparam_1.00_0.00_${order}_00_0.txt 2>&1 &
 pwait $cpus
 fi
 
 if [ ! -f ./results/twoparam_0.00_1.00_${order}_00_0.txt ]; then
-nohup Rscript try_KO_pre.r twoparam_0.00_1.00_${order}_00_0> ./results/twoparam_0.00_1.00_${order}_00_0.txt 2>&1 &
+nohup Rscript try_KO_pre.r twoparam_0.00_1.00_${order}_00_0 > ./results/twoparam_0.00_1.00_${order}_00_0.txt 2>&1 &
 pwait $cpus
 fi
 
 done
+wait

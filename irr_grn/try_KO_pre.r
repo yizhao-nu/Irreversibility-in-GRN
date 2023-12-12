@@ -7,17 +7,20 @@ fp_rs2 = paste('./netfiles/', fp,'.net',sep='')
 fp_unique = paste('./attfiles/','1st_',fp,".csv",sep='')
 unique <- read.csv(fp_unique,header=FALSE)
 print(dim(unique))
-epochs = dim(unique)[1]
-start = apply(unique, 2, function(r) paste(r)) ## converts to character
+epochs = min(dim(unique)[1],15000)
+start = apply(unique, 2, function(r){ paste(r)}) ## converts to character
 
+              
 
 fp_result_KO = paste('./results/result-KO-',fp,'-pre.csv',sep='')
 fp_result_OE = paste('./results/result-OE-',fp,'-pre.csv',sep='')
-
 fp_changed = paste('./results/changed-pre-',fp,'.csv',sep='')
 net <- loadNetwork(fp_rs2)
 
 alterState <- function(S,i){
+    #print(S[i])
+    #S = lapply(S,as.numeric)
+    #print(S[i])
     S[i] <- 1- S[i]
     return(S)
 }
@@ -51,8 +54,9 @@ changed <- function(atts,a){
     return(changed)
 }
 
-
 num_nodes = 87
+epochs = min(dim(start)[1],15000)
+print(epochs)
 results_KO <- matrix(NA,epochs+2,num_nodes)
 results_OE <- matrix(NA,epochs+2,num_nodes)
 rec <- matrix(NA,epochs,num_nodes)
@@ -63,20 +67,16 @@ skipped <- 0 ## is this needed ?
 
 
 ####### use found attractors #######
-for (j in 1:epochs){
-    
+for (j in 1:epochs){ 
     IS <- as.numeric(unlist(start[j,]))
-    print(IS)
+    ## print(IS)
     
-    
-   
-    p0 <- getPathToAttractor(net,IS)
-    print(p0)
-    
-    A0 <- p0[attr(p0,'attractor'):dim(p0)[1],] ## is the :dim(p0) necessary here? I don't think it is
+    ## get periodic attractor
+    p0 <- try(getPathToAttractor(net,IS))
+    if (inherits(p0)=='try-error'){ next }
+    ## print(p0)
+    A0 <- p0[attr(p0,'attractor'),]
     S0 <- A0[1,]
-
-
     s=Sys.time()
     
     for (i in 1:num_nodes){
@@ -84,18 +84,22 @@ for (j in 1:epochs){
         new_i = S1[i]
         N1 <- fixGenes(net,i,new_i)
         p1 <- try(getPathToAttractor(N1,S1,includeAttractorStates = 'first'))
-	    if(inherits(p1, "try-error")){
+        if(inherits(p1, "try-error")){
             results_OE[j,i] <- NA
             results_KO[j,i] <- NA
-            num_changed[j,i] <- 0
-        
-            #error handling code, maybe just skip this iteration using
+            num_changed[j,i] <- 0        
             next
         }
         A1 <- lapply(p1[dim(p1)[1],],as.numeric)
         N2 <- fixGenes(N1,i,-1)
         A1[i] = 1 - new_i
-        p2 <- getPathToAttractor(N2,A1,includeAttractorStates = 'first')
+        p2 <- try(getPathToAttractor(N2,A1,includeAttractorStates = 'first'))
+        if(inherits(p2, "try-error")){
+            results_OE[j,i] <- NA
+            results_KO[j,i] <- NA
+            num_changed[j,i] <- 0        
+            next
+        }
         A2 <- p2[dim(p2)[1],]
         IRR <- not_in_attractors(A0,A2)
         ones = ones + IRR
@@ -103,7 +107,6 @@ for (j in 1:epochs){
             results_KO[j,i] <- IRR
             results_OE[j,i] <- NA
             rec[j,i] <- 1
-        
         }
         else if(S0[[i]]==0){
             results_OE[j,i] <- IRR
@@ -138,7 +141,10 @@ results_KO[epochs+2,] = colSums(rec, na.rm=T)/(epochs-skipped)
 results_KO <- results_KO[,order(results_KO[epochs+1,],decreasing=TRUE)]
 write.csv(results_KO,fp_result_KO)
 
+
+
 num_changed[epochs+1,] = colSums(num_changed[1:epochs,])/(epochs-skipped)
 num_changed <- num_changed[,order(num_changed[epochs+1,],decreasing=TRUE)]
 write.csv(num_changed,fp_changed)
+
 

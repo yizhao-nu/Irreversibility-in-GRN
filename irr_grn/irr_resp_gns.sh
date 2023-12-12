@@ -41,3 +41,4 @@ for order in ${ord[@]}; do
     nohup Rscript analyze_crp_irr_resp_gns.r "twoparam_0.00_1.00_${order}_00_0"
 
 done
+wait
