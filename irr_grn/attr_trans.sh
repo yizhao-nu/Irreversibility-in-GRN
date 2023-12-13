@@ -19,30 +19,30 @@ for p in ${ps[@]}; do
         printf -v pp '%.02f' ${p}
         for i in {0..19}; do
             printf -v ii '%02d' ${i}
-            if [ ! -f ./results/result-attr-trans-KO-twoparam_${pp}_${q11}_${order}_${ii}_${i}.csv ]; then
+            if [ ! -f ./logging/attrtrans_twoparam_${pp}_${q11}_${order}_${ii}_${i}.txt ]; then
                 echo "${pp}_${q11}_${order}_${ii}_${i}"
-                nohup Rscript analyze_attractor_transitions.r "twoparam_${pp}_${q11}_${order}_${ii}_${i}" &
+                nohup Rscript analyze_attractor_transitions.r "twoparam_${pp}_${q11}_${order}_${ii}_${i}" > ./logging/attrtrans_twoparam_${pp}_${q11}_${order}_${ii}_${i}.txt 2>&1 &
                 pwait $cpus
             fi
-            if [ ! -f ./results/result-attr-trans-KO-twoparam_${pp}_1.00_${order}_${ii}_${i}.csv ]; then
+            if [ ! -f ./logging/attrtrans_twoparam_${pp}_1.00_${order}_${ii}_${i}.txt ]; then
                 echo "${pp}_1.00_${order}_${ii}_${i}"
-                nohup Rscript analyze_attractor_transitions.r "twoparam_${pp}_1.00_${order}_${ii}_${i}" &
+                nohup Rscript analyze_attractor_transitions.r "twoparam_${pp}_1.00_${order}_${ii}_${i}" > ./logging/attrtrans_twoparam_${pp}_1.00_${order}_${ii}_${i}.txt 2>&1 &
                 pwait $cpus
             fi
-            if [ ! -f ./results/result-attr-trans-KO-twoparam_0.00_${pp}_${order}_${ii}_${i}.csv ]; then
+            if [ ! -f ./logging/attrtrans_twoparam_0.00_${pp}_${order}_${ii}_${i}.txt ]; then
                 echo "0.00_${pp}_${order}_${ii}_${i}"
-                nohup Rscript analyze_attractor_transitions.r "twoparam_0.00_${pp}_${order}_${ii}_${i}" &
+                nohup Rscript analyze_attractor_transitions.r "twoparam_0.00_${pp}_${order}_${ii}_${i}" > ./logging/attrtrans_twoparam_0.00_${pp}_${order}_${ii}_${i}.txt 2>&1 &
                 pwait $cpus
             fi
         done
-    if [ ! -f ./results/result-attr-trans-KO-twoparam_1.00_0.00_${order}_00_0.csv ]; then
+    if [ ! -f ./logging/attrtrans_twoparam_1.00_0.00_${order}_00_0.txt ]; then
         echo "1.00_0.00_${order}_00_0"
-        nohup Rscript analyze_attractor_transitions.r "twoparam_1.00_0.00_${order}_00_0" &
+        nohup Rscript analyze_attractor_transitions.r "twoparam_1.00_0.00_${order}_00_0" > ./logging/attrtrans_twoparam_1.00_0.00_${order}_00_0.txt 2>&1 &
         pwait $cpus
     fi
-    if [ ! -f ./results/result-attr-trans-KO-twoparam_0.00_1.00_${order}_00_0.csv ]; then
+    if [ ! -f ./logging/attrtrans_twoparam_0.00_1.00_${order}_00_0.txt ]; then
         echo "0.00_1.00_${order}_00_0"
-        nohup Rscript analyze_attractor_transitions.r "twoparam_0.00_1.00_${order}_00_0" &
+        nohup Rscript analyze_attractor_transitions.r "twoparam_0.00_1.00_${order}_00_0" > ./logging/attrtrans_twoparam_0.00_1.00_${order}_00_0.txt 2>&1 &
         pwait $cpus
     fi
     done

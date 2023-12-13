@@ -78,7 +78,7 @@ This script invokes the R script `try_KO_pre.r`.
 The file `irr_grn/irr_resp_gns.sh` calculates the irreversible response genes to the knockout and overexpression of _crp_ according to the Boolean model.
 The script invokes the R script `irr_grn/analyze_crp_irr_resp_gns.r` 
 
-The file `attr_trans.sh` performs the analysis of the attractor transitions.
+The file `irr_grn/attr_trans.sh` performs the analysis of the attractor transitions.
 The script invokes the R script `irr_grn/analyze_attractor_transitions.r`. 
 
 #### Notebooks for generating the figures of the paper.
@@ -87,16 +87,14 @@ The notebook `irr_grn/irr_prob.ipynb`:
 
 1. Analyzes the relationship of the parameters $r$ and $s$ to the rule bias and canalization depth in Fig. 3,
 2. Generates the graph featured in Fig. 4 of the paper, and
-3. Generates Figs. 5 and 6.
+3. Generates Figs. 5, 6, and S1.
 
-The file `irr_grn/variability.py` performs the analysis of the variability of the irreversibility probability as featured in Fig. S1.
-
-The notebook `irr_grn/case_study.ipynb` contains details regarding the RNA-seq data preprocessing, in addition to the code for generating Fig. 7B.
+The notebook `irr_grn/case_study.ipynb` contains details regarding the RNA-seq data preprocessing, in addition to the code for generating Fig. 7B and associated statistical analyses.
 
 The output of this script is used in `irr_grn/attractor_diff.ipynb` to calculate:
 
-1. The fraction of attractors that have each period length;
-2. The fraction of transitions that occur between two fixed points, a fixed point and a partial fixed point, two partial fixed points with the same set of time-dependent nodes, and two partial fixed points with different sets of time-dependent nodes;
+1. The fraction of attractors that have each period length,
+2. The fraction of transitions that occur between two fixed points, a fixed point and a partial fixed point, two partial fixed points with the same set of time-dependent nodes, and two partial fixed points with different sets of time-dependent nodes, and
 3. The fraction of transitions involving at least one partial fixed point for which both the initial and final attractors are guaranteed to be preserved.
 
 These are used to compute the percentages referenced in the Supplementary Information.
