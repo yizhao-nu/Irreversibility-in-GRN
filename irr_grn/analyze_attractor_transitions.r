@@ -90,7 +90,19 @@ for(pt in c('OE','KO')){
         #print(k)
         res.row <- results.df[k,]
         S0 <- attrs.df[k,]
-        S0.attr <- getPathToAttractor(net,S0,includeAttractorStates = 'all')
+        # p1 <- try(getPathToAttractor(N1,S1,includeAttractorStates = 'first'))
+        # if(inherits(p1, "try-error")){
+        #     results_OE[j,i] <- NA
+        #     results_KO[j,i] <- NA
+        #     num_changed[j,i] <- 0        
+        #     next
+        # }
+        
+        S0.attr <- try(getPathToAttractor(net,S0,includeAttractorStates = 'all'))
+        if(inherits(S0.attr, "try-error")){
+            line.data <- c(k,NA, NA, NA, NA , NA, NA, NA, NA)
+            next
+        }
         S0.attr <- sapply(S0.attr, as.numeric)
         if(length(dim(S0.attr))>1){
             init.attr.size <- nrow(S0.attr)
@@ -120,17 +132,30 @@ for(pt in c('OE','KO')){
                 if(inherits(p1, "try-error")){
                     #error handling code, maybe just skip this iteration using
                     #probably want to change this to raising an error
+                    line.data <- c(k,colnm, NA, NA, NA , NA ,length(fixed.genes.0),NA,NA)
                     next
                 }
                 A1 <- lapply(p1[dim(p1)[1],],as.numeric)
-                S1.attr <- getPathToAttractor(N1,A1,includeAttractorStates = 'all')
+                S1.attr <- try(getPathToAttractor(N1,A1,includeAttractorStates = 'all'))
+                if(inherits(S1.attr,'try-error')){
+                    line.data <- c(k,colnm, NA, NA, NA , NA ,length(fixed.genes.0),NA,NA)
+                    next
+                }
                 S1.attr <- sapply(S1.attr, as.numeric)
                 A1 <- changed.identity(S0.attr,S1.attr,T)
                 N2 <- fixGenes(N1,l,-1)
                 A1[[l]] <- 1 - new.i
-                p2 <- getPathToAttractor(N2,A1,includeAttractorStates = 'first')
+                p2 <- try(getPathToAttractor(N2,A1,includeAttractorStates = 'first'))
+                if(inherits(p2,'try-error')){
+                    line.data <- c(k,colnm, NA, NA, NA , NA ,length(fixed.genes.0),NA,NA)
+                    next
+                }                
                 A2 <- p2[dim(p2)[1],]
-                S2.attr <- getPathToAttractor(N2,unlist(A2),includeAttractorStates = "all")
+                S2.attr <- try(getPathToAttractor(N2,unlist(A2),includeAttractorStates = "all"))
+                if(inherits(S2.attr,'try-error')){
+                    line.data <- c(k,colnm, NA, NA, NA , NA ,length(fixed.genes.0),NA,NA)
+                    next
+                }
                 S2.attr <- sapply(S2.attr, as.numeric)
                 if(length(dim(S2.attr))>1){
                     fin.attr.size <- nrow(S2.attr)

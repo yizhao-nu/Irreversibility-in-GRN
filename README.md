@@ -59,7 +59,7 @@ or the Windows equivalent will copy the executable of the `bns` program into the
 The most recent version of RegulonDB can be downloaded from https://regulondb.ccg.unam.mx/menu/download/full_version/index.jsp. We include the file `irr_grn/input_files/generegulation_tmp.txt` downloaded on Jun 17, 2019.
 
 ### Walkthrough of the analysis pipeline
-The steps of the analysis pipeline are described by the `README.md` in the `irr_grn` directory.
+The steps of the analysis pipeline are described by the `README.md` file in the `irr_grn` directory.
 
 ### Scripts and notebooks
 
@@ -68,7 +68,7 @@ The file `irr_grn/read_reduce_grn.py` reads in the RegulonDB network and reduces
 
 The file `irr_grn/generate_nets.py` contains the algorithm for generating the rules for different values of the parameter $r$. This script requires the pyboolnet package to perform the logic reduction of the rules.
 
-The file `irr_grn/bns.sh` applies the attractor finding algorithm of Dubrova et al. (doi:10.1109/TCBB.2010.20) and requires the `bns` executable that can be obtained and compiled as described in Step 2 above.
+The file `irr_grn/bns.sh` applies the attractor finding algorithm of Dubrova _et al._ [doi:10.1109/TCBB.2010.20](https://dx.doi.org/10.1109/TCBB.2010.20) and requires the `bns` executable that can be obtained and compiled as described in Step 2 above.
 
 The file `irr_grn/attcsv.sh` processes the found attractors as an input to the irreversibility detection algorithm.
 
@@ -80,6 +80,8 @@ The script invokes the R script `irr_grn/analyze_crp_irr_resp_gns.r`
 
 The file `irr_grn/attr_trans.sh` performs the analysis of the attractor transitions.
 The script invokes the R script `irr_grn/analyze_attractor_transitions.r`. 
+
+The file `irr_grn/analyze_replicates.py` calculates the summary statistics for independent rules ensembles.
 
 #### Notebooks for generating the figures of the paper.
 
