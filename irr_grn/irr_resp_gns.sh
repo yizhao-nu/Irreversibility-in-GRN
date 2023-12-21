@@ -11,6 +11,13 @@ function pwait() {
 
 ps=(0.20 0.40 0.60 0.80)
 ord=('asc' 'desc')
+gn="crp"
+if [ ! -f "./logging/${gn}/"]; then
+    mkdir "./logging/${gn}/"
+fi
+if [ ! -f "./results/${gn}/"]; then
+    mkdir "./results/${gn}/"
+fi
 
 for order in ${ord[@]}; do
     for p in ${ps[@]}; do
@@ -19,31 +26,31 @@ for order in ${ord[@]}; do
         printf -v pp '%.02f' ${p}
         for i in {0..19}; do
             printf -v ii '%02d' ${i}
-            if [ ! -f "./logging/irrgn_twoparam_${pp}_${q11}_${order}_${ii}_${i}.txt" ]; then 
+            if [ ! -f "./logging/${gn}/irrgn_twoparam_${pp}_${q11}_${order}_${ii}_${i}.txt" ]; then 
                 echo "${pp}_${q11}_${order}_${ii}_${i}"
-                nohup Rscript analyze_crp_irr_resp_gns.r "twoparam_${pp}_${q11}_${order}_${ii}_${i}" > ./logging/irrgn_twoparam_${pp}_${q11}_${order}_${ii}_${i}.txt 2>&1 & 
+                nohup Rscript analyze_crp_irr_resp_gns.r "twoparam_${pp}_${q11}_${order}_${ii}_${i}" > ./logging/${gn}/irrgn_twoparam_${pp}_${q11}_${order}_${ii}_${i}.txt 2>&1 & 
                 pwait $cpus
             fi
-            if [ ! -f "./logging/irrgn_twoparam_${pp}_1.00_${order}_${ii}_${i}.txt" ]; then 
+            if [ ! -f "./logging/${gn}/irrgn_twoparam_${pp}_1.00_${order}_${ii}_${i}.txt" ]; then 
                 echo "${pp}_1.00_${order}_${ii}_${i}"
-                nohup Rscript analyze_crp_irr_resp_gns.r "twoparam_${pp}_1.00_${order}_${ii}_${i}" > ./logging/irrgn_twoparam_${pp}_1.00_${order}_${ii}_${i}.txt 2>&1 & 
+                nohup Rscript analyze_crp_irr_resp_gns.r "twoparam_${pp}_1.00_${order}_${ii}_${i}" > ./logging/${gn}/irrgn_twoparam_${pp}_1.00_${order}_${ii}_${i}.txt 2>&1 & 
                 pwait $cpus
             fi
-            if [ ! -f "./logging/irrgn_twoparam_0.00_${pp}_${order}_${ii}_${i}.txt" ]; then 
+            if [ ! -f "./logging/${gn}/irrgn_twoparam_0.00_${pp}_${order}_${ii}_${i}.txt" ]; then 
                 echo "0.00_${pp}_${order}_${ii}_${i}"
-                nohup Rscript analyze_crp_irr_resp_gns.r "twoparam_0.00_${pp}_${order}_${ii}_${i}" > ./logging/irrgn_twoparam_0.00_${pp}_${order}_${ii}_${i}.txt 2>&1 & 
+                nohup Rscript analyze_crp_irr_resp_gns.r "twoparam_0.00_${pp}_${order}_${ii}_${i}" > ./logging/${gn}/irrgn_twoparam_0.00_${pp}_${order}_${ii}_${i}.txt 2>&1 & 
                 pwait $cpus
             fi
         done
     done
-    if [ ! -f "./logging/irrgn_twoparam_1.00_0.00_${order}_00_0.txt" ]; then 
+    if [ ! -f "./logging/${gn}/irrgn_twoparam_1.00_0.00_${order}_00_0.txt" ]; then 
         echo "twoparam_1.00_0.00_${order}_00_0"
-        nohup Rscript analyze_crp_irr_resp_gns.r "twoparam_1.00_0.00_${order}_00_0" > ./logging/irrgn_twoparam_1.00_0.00_${order}_00_0.txt 2>&1 & 
+        nohup Rscript analyze_crp_irr_resp_gns.r "twoparam_1.00_0.00_${order}_00_0" > ./logging/${gn}/irrgn_twoparam_1.00_0.00_${order}_00_0.txt 2>&1 & 
         pwait $cpus
     fi
-    if [ ! -f "./logging/irrgn_twoparam_0.00_1.00_${order}_00_0.txt" ]; then 
+    if [ ! -f "./logging/${gn}/irrgn_twoparam_0.00_1.00_${order}_00_0.txt" ]; then 
         echo "twoparam_0.00_1.00_${order}_00_0"
-        nohup Rscript analyze_crp_irr_resp_gns.r "twoparam_0.00_1.00_${order}_00_0" >  ./logging/irrgn_twoparam_0.00_1.00_${order}_00_0.txt 2>&1 & 
+        nohup Rscript analyze_crp_irr_resp_gns.r "twoparam_0.00_1.00_${order}_00_0" >  ./logging/${gn}/irrgn_twoparam_0.00_1.00_${order}_00_0.txt 2>&1 & 
         pwait $cpus
     fi
 

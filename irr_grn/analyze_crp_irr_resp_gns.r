@@ -49,8 +49,6 @@ pts <- c('OE','KO')
 for (j in 1:length(pts)){
     pt <- pts[j]
     print(pt)
-    ## create the output file string
-    changed.vec.file <- paste('./results/')
     ## read the lines in the result file, with a counter or otherwise
     fp_result = paste('./results/result-',pt,'-',fp,'-pre.csv',sep='')
     results.df <- read.csv(fp_result,stringsAsFactors = F,check.names = F,row.names=1)
@@ -61,7 +59,8 @@ for (j in 1:length(pts)){
         print(paste("No irreverisible cases:",pt,fp,sep='\t'))
         next
     }
-    crp_result = paste('./results/result-irrgn-',pt,'-',fp,'.csv',sep='') 
+    ## create the output file string
+    crp_result = paste('./results/crp/result-irrgn-',pt,'-',fp,'.csv',sep='') 
 
     ## restrict to the lines that are found to be irreversible
     crp.irr.df <- results.df[TF,]
