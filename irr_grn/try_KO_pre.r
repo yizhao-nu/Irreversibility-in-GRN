@@ -7,7 +7,6 @@ fp_rs2 = paste('./netfiles/', fp,'.net',sep='')
 fp_unique = paste('./attfiles/','1st_',fp,".csv",sep='')
 unique <- read.csv(fp_unique,header=FALSE)
 print(dim(unique))
-epochs = min(dim(unique)[1],15000)
 start = apply(unique, 2, function(r){ paste(r)}) ## converts to character
 
               
@@ -55,7 +54,7 @@ changed <- function(atts,a){
 }
 
 num_nodes = 87
-epochs = min(dim(start)[1],15000)
+epochs = dim(start)[1]
 print(epochs)
 results_KO <- matrix(NA,epochs+2,num_nodes)
 results_OE <- matrix(NA,epochs+2,num_nodes)
