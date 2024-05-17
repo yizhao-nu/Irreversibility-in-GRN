@@ -1,24 +1,24 @@
 library(BoolNet)
 library(dplyr)
 fp = commandArgs()[6]
+chunk.num = strtoi(commandArgs()[7])
+chunk.tot = strtoi(commandArgs()[8])
 print(fp)
+print(chunk.num)
 
 fp_rs2 = paste('./netfiles/', fp,'.net',sep='')
 fp_unique = paste('./attfiles/','1st_',fp,".csv",sep='')
 unique <- read.csv(fp_unique,header=FALSE)
-print(dim(unique))
+#print(dim(unique))
 
               
 
-fp_result_KO = paste('./results/result-KO-',fp,'-pre.csv',sep='')
-fp_result_OE = paste('./results/result-OE-',fp,'-pre.csv',sep='')
-fp_changed = paste('./results/changed-pre-',fp,'.csv',sep='')
+fp_result_KO = paste('./results/result-KO-',fp,'-chunk-',chunk.num,'-of-',chunk.tot,'.csv',sep='')
+fp_result_OE = paste('./results/result-OE-',fp,'-chunk-',chunk.num,'-of-',chunk.tot,'.csv',sep='')
+fp_changed = paste('./results/changed-',fp,'-chunk-',chunk.num,'-of-',chunk.tot,'.csv',sep='')
 net <- loadNetwork(fp_rs2)
 
 alterState <- function(S,i){
-    #print(S[i])
-    #S = lapply(S,as.numeric)
-    #print(S[i])
     S[i] <- 1- S[i]
     return(S)
 }
@@ -53,7 +53,8 @@ changed <- function(atts,a){
 }
 
 num_nodes = 87
-epochs = dim(start)[1]
+indices = seq(chunk.num,dim(unique)[1],chunk.tot)
+epochs = length(indices)
 print(epochs)
 results_KO <- matrix(NA,epochs+2,num_nodes)
 results_OE <- matrix(NA,epochs+2,num_nodes)
@@ -65,8 +66,8 @@ skipped <- 0 ## is this needed ?
 
 
 ####### use found attractors #######
-for (j in 1:epochs){
-    start = apply(unique[j,], 1, function(r){ paste(r)}) ## converts to character
+for (j in 1:length(indices)){
+    start <- apply(unique[indices[j],],1, function(r){paste(r)})	
     IS <- as.numeric(unlist(start))
     ## print(IS)
     
@@ -76,7 +77,7 @@ for (j in 1:epochs){
     ## print(p0)
     A0 <- p0[attr(p0,'attractor'),]
     S0 <- A0[1,]
-    s=Sys.time()
+    #s=Sys.time()
     
     for (i in 1:num_nodes){
         S1 <- alterState(S0,i)
@@ -121,8 +122,9 @@ for (j in 1:epochs){
         
     }
     
-    e=Sys.time()
-    print(e-s)
+    #e=Sys.time()
+    #print(j)
+    #print(e-s)
 
 }
 
@@ -135,11 +137,11 @@ results_OE[epochs+2,] = 1- (colSums(rec, na.rm=T)/(epochs-skipped))
 results_OE <- results_OE[,order(results_OE[epochs+1,],decreasing=TRUE)]
 write.csv(results_OE,fp_result_OE)
 
+
 results_KO[epochs+1,] = colMeans(results_KO[1:epochs,], na.rm=T)
 results_KO[epochs+2,] = colSums(rec, na.rm=T)/(epochs-skipped)
 results_KO <- results_KO[,order(results_KO[epochs+1,],decreasing=TRUE)]
 write.csv(results_KO,fp_result_KO)
-
 
 
 num_changed[epochs+1,] = colSums(num_changed[1:epochs,])/(epochs-skipped)

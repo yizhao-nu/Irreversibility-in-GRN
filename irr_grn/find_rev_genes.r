@@ -10,7 +10,7 @@ attrs.df <- read.csv(fp_unique,header=FALSE)
 net <- loadNetwork(fp_rs2)
 colnames(attrs.df) <- net$genes
 print(dim(attrs.df))
-start = apply(attrs.df, 2, function(r){ paste(r)}) ## converts to character
+
           
 
 fp_revgn_KO = paste('./results/',gn,'/rev-changed-KO-',fp,'-pre.csv',sep='')
@@ -56,7 +56,7 @@ changed.identity <- function(atts,a,COLNAMES){
 
 num_nodes <- 87
 
-epochs = dim(start)[1]
+epochs = dim(attrs.df)[1]
 print(epochs)
 revgn_KO <- matrix(NA, epochs, num_nodes)
 revgn_OE <- matrix(NA, epochs, num_nodes)
@@ -71,7 +71,8 @@ gn.ind <- grep(paste("^", gn, "$", sep=""), colnames(attrs.df))
 
 ####### use found attractors #######
 for (j in 1:epochs){ 
-    IS <- as.numeric(unlist(start[j,]))
+    start <- apply(attrs.df[j,], 1, function(r){ paste(r)}) ## converts to character
+    IS <- as.numeric(unlist(start))
     p0 <- try(getPathToAttractor(net,IS,includeAttractorStates = 'first'))
     if (inherits(p0,'try-error')){ next }
     A0 <- p0[attr(p0,'attractor'),]
