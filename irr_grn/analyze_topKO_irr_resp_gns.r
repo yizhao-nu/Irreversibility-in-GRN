@@ -114,8 +114,8 @@ for(k in seq_len(nrow(gn.irr.df))){
     }
     p2.attr <- p2.all[attr(p2.all,'attractor'),]
     ind.pair.2 <- closest.approach(p2.attr,S0.attr)
-    ii.min.2 <- ind.pair[1]
-    jj.min.2 <- ind.pair[2]
+    ii.min.2 <- ind.pair.2[1]
+    jj.min.2 <- ind.pair.2[2]
     A2 <- p2.attr[ii.min.2,]
     changed <- changed.identity(S0,A2,colnames(attrs.df))
     #changed <- setdiff(changed,c(gn))
