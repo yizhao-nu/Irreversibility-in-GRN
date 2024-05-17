@@ -102,7 +102,7 @@ for(k in seq_len(nrow(gn.irr.df))){
     ind.pair <- closest.approach(p1.attr,S0.attr)
     ii.min <- ind.pair[1]
     jj.min <- ind.pair[2]
-    A1 <- lapply(p1.attr[jj.min,],as.numeric)
+    A1 <- lapply(p1.attr[ii.min,],as.numeric)
     N2 <- fixGenes(N1,gn.ind,-1)
     A1[[gn.ind]] <- 1 - new_i
     p2.all <- try(getPathToAttractor(N2,A1,includeAttractorStates = 'all'))
@@ -116,7 +116,7 @@ for(k in seq_len(nrow(gn.irr.df))){
     ind.pair.2 <- closest.approach(p2.attr,S0.attr)
     ii.min.2 <- ind.pair[1]
     jj.min.2 <- ind.pair[2]
-    A2 <- p2.attr[jj.min.2,]
+    A2 <- p2.attr[ii.min.2,]
     changed <- changed.identity(S0,A2,colnames(attrs.df))
     #changed <- setdiff(changed,c(gn))
     if(length(changed)>0){
