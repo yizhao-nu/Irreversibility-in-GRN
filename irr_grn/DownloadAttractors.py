@@ -10,6 +10,7 @@ url_dict = { ## urls need to be inserted here
     "attractor_transitions":
     'KO_results':
     'OE_results':
+    'changed_results':
     'crpKO_intermediate_attractors':
     'crpKO_irreversible_genes':
     'crpKO_reversible_genes':
@@ -30,6 +31,7 @@ path_dict = {
     "attractor_transitions":'./results/result_attr_trans.tar.gz',
     'KO_results':'./results/result_KO_twoparam.tar.gz',
     'OE_results':'./results/result_OE_twoparam.tar.gz',
+    'changed_results':'./results/changed_pre_twoparam.tar.gz',
     'crpKO_intermediate_attractors':'results/crp/a1_irrgn_crp.tar.gz',
     'crpKO_irreversible_genes':'results/crp/irrev_changed_crp.tar.gz',
     'crpKO_reversible_genes':'results/crp/rev_changed_crp.tar.gz',
@@ -50,6 +52,7 @@ data_name_dict = {
     "attractor_transitions":'attractor transitions results',
     'KO_results':'KO perturbation results',
     'OE_results':'OE perturbation results',
+    'changed_results':'changed genes results',
     'crpKO_intermediate_attractors':'Intermediate attractors reached after perturbation',
     'crpKO_irreversible_genes':'Irreversible response genes to crp KO',
     'crpKO_reversible_genes':'Reversible response genes to crp KO',
