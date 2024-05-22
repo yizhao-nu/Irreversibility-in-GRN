@@ -12,7 +12,7 @@ url_dict = { ## urls need to be inserted here
     'OE_results': 'https://drive.google.com/u/0/uc?id=1U2qRFvQ7AmOC4tzpINTWSjLReSDLuNa2&export=download',
     'changed_results': 'https://drive.google.com/u/0/uc?id=11zDDcJW68tAHB4tXJzdEikkMWG_Sx_Cg&export=download',
     'crpKO_intermediate_attractors': 'https://drive.google.com/u/0/uc?id=1kEyRY_RMF-zgw22eFqmLqVYdS2qL8rJv&export=download',
-    'crpKO_irreversible_genes': https://drive.google.com/u/0/uc?id=1StH5AYZVHzQOKfP_Kbk6hdJRjBByTkrl&export=download',
+    'crpKO_irreversible_genes': 'https://drive.google.com/u/0/uc?id=1StH5AYZVHzQOKfP_Kbk6hdJRjBByTkrl&export=download',
     'crpKO_reversible_genes': 'https://drive.google.com/u/0/uc?id=1H7C46n10umCkgiLzcoLFy_6zuXK-LlPF&export=download',
     'crpKO_irrev_results': 'https://drive.google.com/u/0/uc?id=11K6Ok9F3EOn_HVIXG7r3BHrdaj3KjoSX&export=download',
     'attractor_args_d': 'https://drive.google.com/u/0/uc?id=1gN_Sg8x8wYWxMG61QIGh-y6_3NeJKhV-&export=download'
