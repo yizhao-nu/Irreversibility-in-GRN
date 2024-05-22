@@ -4,24 +4,24 @@ import urllib.request
  
 
 url_dict = { ## urls need to be inserted here
-    "att_txt_files":
-    "att_1st_files":
-    "example_netfiles":
-    "attractor_transitions":
-    'KO_results':
-    'OE_results':
-    'changed_results':
-    'crpKO_intermediate_attractors':
-    'crpKO_irreversible_genes':
-    'crpKO_reversible_genes':
-    'crpKO_irrev_results':
-    'attractor_args_d':
-    'gene_status_df':
-    "transcription_logtpm":
-    "transcription_metadata":
-    "gsym_thresholds":
-    "gsym_biases":
-    "gsym_zero_biases":
+    "att_txt_files": 'https://drive.google.com/u/0/uc?id=1GgWQi6b6nk8YVnPqjCbGOWLVeo1guIck&export=download',
+    "att_1st_files": 'https://drive.google.com/u/0/uc?id=1PPhYO2vVDQ2bMxv6InWdgqWRnhLAlxgQ&export=download',
+    "example_netfiles": 'https://drive.google.com/u/0/uc?id=1-Iu15H1HbPIQcBu8mJJcg3q_xA51qNXp&export=download',
+    "attractor_transitions": 'https://drive.google.com/u/0/uc?id=1UAQTNvudVRdZh28zOadYOR9PgB-LQD5C&export=download',
+    'KO_results': 'https://drive.google.com/u/0/uc?id=1QvydaQQRY3ooV3JEWaw95EGjj96nUaPQ&export=download',
+    'OE_results': 'https://drive.google.com/u/0/uc?id=1U2qRFvQ7AmOC4tzpINTWSjLReSDLuNa2&export=download',
+    'changed_results': 'https://drive.google.com/u/0/uc?id=11zDDcJW68tAHB4tXJzdEikkMWG_Sx_Cg&export=download',
+    'crpKO_intermediate_attractors': 'https://drive.google.com/u/0/uc?id=1kEyRY_RMF-zgw22eFqmLqVYdS2qL8rJv&export=download',
+    'crpKO_irreversible_genes': https://drive.google.com/u/0/uc?id=1StH5AYZVHzQOKfP_Kbk6hdJRjBByTkrl&export=download',
+    'crpKO_reversible_genes': 'https://drive.google.com/u/0/uc?id=1H7C46n10umCkgiLzcoLFy_6zuXK-LlPF&export=download',
+    'crpKO_irrev_results': 'https://drive.google.com/u/0/uc?id=11K6Ok9F3EOn_HVIXG7r3BHrdaj3KjoSX&export=download',
+    'attractor_args_d': 'https://drive.google.com/u/0/uc?id=1gN_Sg8x8wYWxMG61QIGh-y6_3NeJKhV-&export=download'
+    'gene_status_df': 'https://drive.google.com/u/0/uc?id=15ttPGUhKkNRjvCHKqMZXCYW5ZcwvkgxL&export=download'
+    "transcription_logtpm": 'https://drive.google.com/u/0/uc?id=1K77vTyUc4Ie_fR56EKTOjjxlTGZcLgpv&export=download',
+    "transcription_metadata": 'https://drive.google.com/u/0/uc?id=1pXv6y6Wh5Q-P9FKj0IeycimRjQJIcMsy&export=download',
+    "gsym_thresholds": 'https://drive.google.com/u/0/uc?id=1Brmx1EmdYiQPbdnY-d-YUC_yZVgh5k-a&export=download',
+    "gsym_biases": 'https://drive.google.com/u/0/uc?id=1Lixy8qm4jN5N03D7ZMkQeBaDJfiY5dO9&export=download',
+    "gsym_zero_biases": 'https://drive.google.com/u/0/uc?id=1Brmx1EmdYiQPbdnY-d-YUC_yZVgh5k-a&export=download'
 }
 
 path_dict = {
