@@ -18,7 +18,7 @@ It is possible to create a virtual environment with the packages using the comma
 The following packages are installed upon creating the environment:
 
 * gh: GitHub command line interface
-* git: git version control sofrware
+* git: git version control software
 * jupyter: python library for viewing python notebooks, used for running commands interactively
 * matplotlib: python plotting library, used for generating figures
 * networkx: python network algorithms, analysis, and layout library
