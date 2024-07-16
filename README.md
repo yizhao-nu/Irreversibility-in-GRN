@@ -56,7 +56,7 @@ or the Windows equivalent will copy the executable of the `bns` program into the
 
 ## Files in the repository
 ### RegulonDB files
-The most recent version of RegulonDB can be downloaded from https://regulondb.ccg.unam.mx/menu/download/full_version/index.jsp. We include the file `irr_grn/input_files/generegulation_tmp.txt` downloaded on Jun 17, 2019.
+The most recent version of RegulonDB can be downloaded from [https://regulondb.ccg.unam.mx/](https://regulondb.ccg.unam.mx/releasesNote/date=2018-06-18&version=10.0). We include the file `irr_grn/input_files/generegulation_tmp.txt` downloaded on Jun 17, 2019.
 
 ### Walkthrough of the analysis pipeline
 The steps of the analysis pipeline are described by the `README.md` file in the `irr_grn` directory.
