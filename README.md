@@ -10,7 +10,7 @@ See details at the link for installation.
 
 It is possible to create a virtual environment with the packages using the command:
 
-`mamba create env -n irrev-in-gn-nets -c conda-forge python=3.10 gh git jupyter matplotlib networkx numpy openpyxl pandas patsy scipy scikit-learn sympy r-essentials r-base r-dplyr r-BoolNet`
+`mamba create -n irrev-in-gn-nets -c conda-forge python=3.10 gh git jupyter matplotlib networkx numpy openpyxl pandas patsy scipy scikit-learn sympy r-essentials r-base r-dplyr r-BoolNet`
 
 
 #### Initially installed packages
@@ -49,19 +49,21 @@ Next, copy the `bns` executable (`bns.exe` on Windows) into the `irr_grn` direct
 If you cloned the repository into the same directory that you downloaded `bns_v1.3.zip` into, then
 the command
 
-`cp bns_v1.3/src/bns irr_grn/bns`
+`cp bns_v1.3/src/bns Irreversibility-in-GRN/irr_grn/bns`
 
 or the Windows equivalent will copy the executable of the `bns` program into the repository.
 
 
 ## Files in the repository
 ### RegulonDB files
-The most recent version of RegulonDB can be downloaded from https://regulondb.ccg.unam.mx/menu/download/full_version/index.jsp. We include the file `irr_grn/input_files/generegulation_tmp.txt` downloaded on Jun 17, 2019.
+The most recent version of RegulonDB can be downloaded from https://regulondb.ccg.unam.mx/. Our work is based on [version 10.0](https://regulondb.ccg.unam.mx/releasesNote/date=2018-06-18&version=10.0). We include the file `irr_grn/input_files/generegulation_tmp.txt` downloaded on June 17, 2019.
 
 ### Walkthrough of the analysis pipeline
 The steps of the analysis pipeline are described by the `README.md` file in the `irr_grn` directory.
 
 ### Scripts and notebooks
+
+All file paths referenced below assume that the user has navigated to `Irreversibility-in-GRN/`, the base directory of the repository
 
 #### Scripts for processing the input data, generating rules, finding attractors, and characterizing transitions.
 The file `irr_grn/read_reduce_grn.py` reads in the RegulonDB network and reduces it to its core.
