@@ -49,7 +49,7 @@ Next, copy the `bns` executable (`bns.exe` on Windows) into the `irr_grn` direct
 If you cloned the repository into the same directory that you downloaded `bns_v1.3.zip` into, then
 the command
 
-`cp bns_v1.3/src/bns irr_grn/bns`
+`cp bns_v1.3/src/bns  Irreversibility-in-GRN/irr_grn/bns`
 
 or the Windows equivalent will copy the executable of the `bns` program into the repository.
 
