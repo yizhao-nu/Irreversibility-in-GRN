@@ -83,7 +83,7 @@ if __name__ == '__main__':
     bprob = float(sys.argv[2]) 
     order = sys.argv[3] 
     
-    G_rs2 = nx.read_gml('./networks/rs2.gml')
+    G_rs2 = nx.read_gml('./networks/rs2_irr_neg2_new.gml')
     name = './netfiles/twoparam_%.2f_%.2f_%s_%02d_%d' % (cprob,bprob,order,rep,RANDOM_SEED)
     print(name)
     net(G_rs2,name,cprob,bprob,order)
