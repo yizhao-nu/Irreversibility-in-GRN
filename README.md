@@ -10,13 +10,14 @@ See details at the link for installation.
 
 It is possible to create a virtual environment with the packages using the command:
 
-`mamba create -n irrev-in-gn-nets -c conda-forge python=3.10 gh git jupyter matplotlib networkx numpy openpyxl pandas patsy scipy scikit-learn sympy r-essentials r-base r-dplyr r-BoolNet`
+`mamba create -n irrev-in-gn-nets -c conda-forge python=3.10 gdown gh git jupyter matplotlib networkx numpy openpyxl pandas patsy scipy scikit-learn sympy r-essentials r-base r-dplyr r-BoolNet`
 
 
 #### Initially installed packages
 
 The following packages are installed upon creating the environment:
 
+* gdown: Google Drive public file downloader
 * gh: GitHub command line interface
 * git: git version control sofrware
 * jupyter: python library for viewing python notebooks, used for running commands interactively
