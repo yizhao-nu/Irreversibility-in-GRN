@@ -15,8 +15,8 @@ url_dict = { ## urls need to be inserted here
     'crpKO_irreversible_genes': 'https://drive.google.com/u/0/uc?id=1StH5AYZVHzQOKfP_Kbk6hdJRjBByTkrl&export=download',
     'crpKO_reversible_genes': 'https://drive.google.com/u/0/uc?id=1H7C46n10umCkgiLzcoLFy_6zuXK-LlPF&export=download',
     'crpKO_irrev_results': 'https://drive.google.com/u/0/uc?id=11K6Ok9F3EOn_HVIXG7r3BHrdaj3KjoSX&export=download',
-    'attractor_args_d': 'https://drive.google.com/u/0/uc?id=1gN_Sg8x8wYWxMG61QIGh-y6_3NeJKhV-&export=download'
-    'gene_status_df': 'https://drive.google.com/u/0/uc?id=15ttPGUhKkNRjvCHKqMZXCYW5ZcwvkgxL&export=download'
+    'attractor_args_d': 'https://drive.google.com/u/0/uc?id=1gN_Sg8x8wYWxMG61QIGh-y6_3NeJKhV-&export=download',
+    'gene_status_df': 'https://drive.google.com/u/0/uc?id=15ttPGUhKkNRjvCHKqMZXCYW5ZcwvkgxL&export=download',
     "transcription_logtpm": 'https://drive.google.com/u/0/uc?id=1K77vTyUc4Ie_fR56EKTOjjxlTGZcLgpv&export=download',
     "transcription_metadata": 'https://drive.google.com/u/0/uc?id=1pXv6y6Wh5Q-P9FKj0IeycimRjQJIcMsy&export=download',
     "gsym_thresholds": 'https://drive.google.com/u/0/uc?id=1Brmx1EmdYiQPbdnY-d-YUC_yZVgh5k-a&export=download',
