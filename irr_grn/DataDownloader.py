@@ -1,6 +1,6 @@
 import os
 import urllib.request 
-
+import gdown
  
 
 url_dict = { ## urls need to be inserted here
@@ -72,7 +72,7 @@ def main():
     for file_key,data_name in data_name_dict.items():
         data_path = path_dict[file_key]
         data_url = url_dict[file_key]
-        urllib.request.urlretrieve(data_url, data_path)
+        gdown.download(data_url, data_path)
         print(f"{data_name} data has been downloaded and saved in {data_path}")
 
 
