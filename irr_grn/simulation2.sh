@@ -20,4 +20,3 @@ for fp in ${fps[@]}; do
         pwait $cpus
     done
 done
-wait
