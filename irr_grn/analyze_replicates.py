@@ -164,7 +164,7 @@ def main():
         numattr_d = {}
         for aa,pt in enumerate(['KO','OE']):
             for bb,srt in enumerate(['desc','asc']):
-                print(pt,ser)
+                print(pt,srt)
                 fn_l = glob("results/result-attr-trans-%s-twoparam_*_*_%s_*.csv" % (pt,srt))
                 for fn in fn_l:
                     __,ss,rr,__,rep,__ = fn.split('/')[-1].split('_')
