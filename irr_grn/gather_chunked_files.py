@@ -10,7 +10,8 @@ def main():
         'twoparam_0.40_1.00_asc_00_0', 'twoparam_0.40_1.00_asc_02_2', 'twoparam_0.40_1.00_asc_03_3', 
         'twoparam_0.40_1.00_asc_05_5', 'twoparam_0.40_1.00_asc_08_8', 'twoparam_0.40,_1.00_asc_09_9', 
         'twoparam_0.40_1.00_asc_10_10', 'twoparam_0.40_1.00_asc_11_11', 'twoparam_0.40_1.00_asc_17_17', 
-        'twoparam_0.80_1.00_asc_07_7', 'twoparam_0.80_1.00_asc_01_1', 'twoparam_0.60_1.00_asc_16_16', 'twoparam_0.40_1.00_asc_18_18' ]
+        'twoparam_0.80_1.00_asc_07_7', 'twoparam_0.80_1.00_asc_01_1', 'twoparam_0.60_1.00_asc_16_16', 
+        'twoparam_0.40_1.00_asc_18_18', 'twoparam_0.40_1.00_asc_09_9']
 
 
     prefix_l = ['changed','result-OE','result-KO']
