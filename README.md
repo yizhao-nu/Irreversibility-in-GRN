@@ -42,6 +42,7 @@ After creating the virtual environment, activate the environment by typing
 
 Then, install the following packages:
 * pyboolnet (Enter `pip install git+https://github.com/hklarner/pyboolnet` at the command line)
+* pip install scoop
 * bns (download the source code from https://people.kth.se/~dubrova/BNS/bns_v1.3.zip and follow the instructions in the README file)
 
 ### Step 3: Clone the repository
