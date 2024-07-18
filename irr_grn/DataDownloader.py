@@ -22,6 +22,7 @@ url_dict = { ## urls need to be inserted here
     "gsym_thresholds": 'https://drive.google.com/u/0/uc?id=1Brmx1EmdYiQPbdnY-d-YUC_yZVgh5k-a&export=download',
     "gsym_biases": 'https://drive.google.com/u/0/uc?id=1Lixy8qm4jN5N03D7ZMkQeBaDJfiY5dO9&export=download',
     "gsym_zero_biases": 'https://drive.google.com/u/0/uc?id=1Brmx1EmdYiQPbdnY-d-YUC_yZVgh5k-a&export=download'
+    "overall_output": 'https://drive.google.com/file/d/1m9y9aZ2YtnTylYYq1_L4pbRYZvb6QOQM&export=download'
 }
 
 path_dict = {
@@ -43,6 +44,7 @@ path_dict = {
     "gsym_thresholds":'./tmp/gsym_thr_ser.pkl',
     "gsym_biases":'./tmp/gsym_bias_ser.pkl',
     "gsym_zero_biases":'./tmp/gsym_biasz_ser.pkl',
+    "overall_output": './tmp/overall_output_d.pkl'
 }
 
 data_name_dict = {
@@ -64,6 +66,7 @@ data_name_dict = {
     "gsym_thresholds":'Thresholds for binarizing genes',
     "gsym_biases":'Probability of genes being expressed above threshold',
     "gsym_zero_biases":'Probability of genes being expressed above zero',
+    "overall_output": 'averages over resampled different network reconstructions'
 }
 
  
