@@ -27,7 +27,7 @@ url_dict = { ## urls need to be inserted here
 path_dict = {
     "att_txt_files": "./attfiles/att_txt_files.tar.gz",
     "att_1st_files": './attfiles/1st_csv_files.tar.gz',
-    "example_netfiles": './netfiles/example_netiles.tar.gz',
+    "example_netfiles": './netfiles/example_netfiles.tar.gz',
     "attractor_transitions":'./results/result_attr_trans.tar.gz',
     'KO_results':'./results/result_KO_twoparam.tar.gz',
     'OE_results':'./results/result_OE_twoparam.tar.gz',
