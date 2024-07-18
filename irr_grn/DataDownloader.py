@@ -22,9 +22,9 @@ url_dict = { ## urls need to be inserted here
     "gsym_thresholds": 'https://drive.google.com/u/0/uc?id=1Brmx1EmdYiQPbdnY-d-YUC_yZVgh5k-a&export=download',
     "gsym_biases": 'https://drive.google.com/u/0/uc?id=1Lixy8qm4jN5N03D7ZMkQeBaDJfiY5dO9&export=download',
     "gsym_zero_biases": 'https://drive.google.com/u/0/uc?id=1Brmx1EmdYiQPbdnY-d-YUC_yZVgh5k-a&export=download',
-    "overall_output": 'https://drive.google.com/file/d/1m9y9aZ2YtnTylYYq1_L4pbRYZvb6QOQM&export=download',
-    "basin_sizes": 'https://drive.google.com/file/d/1EcwgcaVQuPcn84tVxmw_sBK4XFSkHDOI&export=download',
-    "basin_freqs": 'https://drive.google.com/file/d/1fOLtDHAK18qy2TGQccateuBbZCDiCCX4&export=download',
+    "overall_output": 'https://drive.usercontent.google.com/u/0/uc?id=1m9y9aZ2YtnTylYYq1_L4pbRYZvb6QOQM&export=download',
+    "basin_sizes": 'https://drive.google.com/u/0/uc?id=1EcwgcaVQuPcn84tVxmw_sBK4XFSkHDOI&export=download',
+    "basin_freqs": 'https://drive.google.com/u/0/uc?id=1fOLtDHAK18qy2TGQccateuBbZCDiCCX4&export=download',
 }
 
 path_dict = {
