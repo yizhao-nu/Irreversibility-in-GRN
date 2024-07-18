@@ -53,7 +53,7 @@ changed <- function(atts,a){
 }
 
 num_nodes = 87
-epochs = dim(start)[1]
+epochs = dim(unique)[1]
 print(epochs)
 results_KO <- matrix(NA,epochs+2,num_nodes)
 results_OE <- matrix(NA,epochs+2,num_nodes)

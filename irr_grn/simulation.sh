@@ -32,7 +32,9 @@ q1=1.00
 printf -v i "%d" ${ii#0}
 fp1=twoparam_${p}_${q1}_${order}_${ii}_${i}
 if [ ! -f ./logging/${fp1}.txt ]; then
-if in_list ${fp1} ${fps}; then
+if in_list ${fp1} ${fps[@]}; then
+echo ${fp1} "completed in simulation2.sh"
+else
 echo ${fp1}
 nohup Rscript ${script_name} ${fp1} > ./logging/${fp1}.txt 2>&1 & 
 pwait $cpus
@@ -44,7 +46,9 @@ q2=$(bc -l <<<"1-${p}")
 printf -v q11 "%.02f" ${q2}
 fp2=twoparam_${p}_${q11}_${order}_${ii}_${i}
 if [ ! -f ./logging/${fp2}.txt ]; then
-if in_list ${fp2} ${fps}; then
+if in_list ${fp2} ${fps[@]}; then
+echo ${fp2} "completed in simulation2.sh"
+else
 echo ${fp2}
 nohup Rscript ${script_name} ${fp2} > ./logging/${fp2}.txt 2>&1 & 
 pwait $cpus
@@ -54,7 +58,9 @@ fi
 q3=0.00
 fp3=twoparam_${q3}_${p}_${order}_${ii}_${i}
 if [ ! -f ./logging/${fp3}.txt ]; then
-if in_list ${fp3} ${fps}; then
+if in_list ${fp3} ${fps[@]}; then
+echo ${fp3} "completed in simulation2.sh"
+else
 echo ${fp3}
 nohup Rscript ${script_name} ${fp3} > ./logging/${fp3}.txt 2>&1 & 
 pwait $cpus
